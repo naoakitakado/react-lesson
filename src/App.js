@@ -1,22 +1,8 @@
-import { useState } from "react";
-import { ChildArea } from "./ChildArea";
-import "./styles.css";
+import { createRoot } from "react-dom/client";
 
-export default function App() {
-  const [text, setText] = useState("");
-  const [open, setOpen] = useState(false);
+import App from "./App";
 
-  const onChangeText = (e) => setText(e.target.value);
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
 
-  const onClickOpen = () => setOpen(!open);
-
-  return (
-    <div className="App">
-      <input value={text} onChange={onChangeText} />
-      <br />
-      <br />
-      <button onClick={onClickOpen}>表示</button>
-      <ChildArea open={open} />
-    </div>
-  );
-}
+root.render(<App />);
